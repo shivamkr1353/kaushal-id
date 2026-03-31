@@ -42,7 +42,7 @@ CREATE POLICY "Public profiles are viewable"
 CREATE TABLE public.workers (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
-  kaushal_id TEXT UNIQUE NOT NULL, -- e.g. KID-2024-0001
+  kaushal_id TEXT UNIQUE NOT NULL, -- e.g. KID-2026-0001
   skill TEXT NOT NULL,
   experience_years INTEGER DEFAULT 0,
   location TEXT,

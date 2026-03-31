@@ -53,7 +53,7 @@ export const ROLE_CONFIG = {
 // ===== MOCK WORKERS =====
 export const MOCK_WORKERS = [
   {
-    id: 'KID-2024-0001',
+    id: 'KID-2026-0001',
     name: 'Rajesh Kumar',
     photo: null,
     skill: 'Electrician',
@@ -78,7 +78,7 @@ export const MOCK_WORKERS = [
     badges: ['⚡ Top Rated', '🔄 Repeat Pro', '🛡️ Fully Verified'],
   },
   {
-    id: 'KID-2024-0042',
+    id: 'KID-2026-0042',
     name: 'Suresh Yadav',
     photo: null,
     skill: 'Plumber',
@@ -103,7 +103,7 @@ export const MOCK_WORKERS = [
     badges: ['🛡️ Fully Verified', '🔧 Expert'],
   },
   {
-    id: 'KID-2024-0087',
+    id: 'KID-2026-0087',
     name: 'Mohan Lal',
     photo: null,
     skill: 'Carpenter',
@@ -128,7 +128,7 @@ export const MOCK_WORKERS = [
     badges: ['⚡ Top Rated', '🔄 Repeat Pro', '🛡️ Fully Verified', '🪵 Master Craftsman'],
   },
   {
-    id: 'KID-2024-0103',
+    id: 'KID-2026-0103',
     name: 'Amit Sharma',
     photo: null,
     skill: 'Painter',
@@ -153,7 +153,7 @@ export const MOCK_WORKERS = [
     badges: ['🎨 Creative'],
   },
   {
-    id: 'KID-2024-0156',
+    id: 'KID-2026-0156',
     name: 'Dinesh Verma',
     photo: null,
     skill: 'Technician',
@@ -178,7 +178,7 @@ export const MOCK_WORKERS = [
     badges: ['🛡️ Fully Verified', '🔧 Expert', '⚡ Top Rated'],
   },
   {
-    id: 'KID-2024-0189',
+    id: 'KID-2026-0189',
     name: 'Gopal Singh',
     photo: null,
     skill: 'Locksmith',
