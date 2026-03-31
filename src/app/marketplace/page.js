@@ -66,7 +66,7 @@ export default function MarketplacePage() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-sm text-white focus:outline-none focus:border-[#6366f1]/50 transition-all"
+              className="px-4 py-2 rounded-xl bg-[#1e2338]/80 border border-white/10 text-sm text-white focus:outline-none focus:border-[#6366f1]/50 transition-all [&_option]:bg-[#1e2338] [&_option]:text-white"
             >
               <option value="rating">Rating</option>
               <option value="safety">Safety Score</option>

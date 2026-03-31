@@ -117,7 +117,7 @@ export default function WorkerDashboardPage() {
           <GlassCard className="text-center animate-slideUp delay-100">
             <h3 className="text-sm font-semibold text-white/70 uppercase tracking-wider mb-4">Your Kaushal-ID QR</h3>
             <QRGenerator
-              value={`https://kaushal-id.in/verify/${worker.id}`}
+              value={`https://kaushal-id.vercel.app/verify/${worker.id}`}
               size={140}
             />
             <p className="text-xs text-white/30 mt-3">Share with customers for instant verification</p>

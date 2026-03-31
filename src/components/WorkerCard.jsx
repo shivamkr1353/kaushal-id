@@ -73,10 +73,10 @@ export default function WorkerCard({ worker }) {
         >
           View Profile
         </Link>
-        <button className="flex-1 text-xs font-medium py-2 rounded-lg text-white hover:opacity-90 transition-all"
+        <a href={`tel:${worker.phone || '+919876543210'}`} className="flex-1 text-xs text-center font-medium py-2 rounded-lg text-white hover:opacity-90 transition-all block"
                 style={{ background: 'var(--gradient-emerald)' }}>
           📞 Call Now
-        </button>
+        </a>
       </div>
     </div>
   );

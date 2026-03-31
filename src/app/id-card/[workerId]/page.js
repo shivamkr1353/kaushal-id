@@ -67,8 +67,8 @@ export default async function IDCardPage({ params }) {
               {/* QR Code */}
               <div className="shrink-0">
                 <QRGenerator
-                  value={`https://kaushal-id.in/verify/${worker.id}`}
-                  size={100}
+                  value={`https://kaushal-id.vercel.app/verify/${worker.id}`}
+                  size={120}
                 />
                 <p className="text-[9px] text-white/20 text-center mt-1">Scan for Live Score</p>
               </div>

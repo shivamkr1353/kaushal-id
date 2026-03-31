@@ -29,6 +29,7 @@ export default function WorkerRegisterPage() {
         email: form.email,
         password: form.password,
         options: {
+          emailRedirectTo: `${window.location.origin}/auth/callback`,
           data: {
             full_name: form.name,
             phone: form.phone,

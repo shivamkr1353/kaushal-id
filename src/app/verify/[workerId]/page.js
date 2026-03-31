@@ -91,7 +91,7 @@ export default async function VerifyWorkerPage({ params }) {
           <div className="glass rounded-2xl p-6 text-center animate-slideUp delay-100">
             <h3 className="text-sm font-semibold text-white/70 mb-4 uppercase tracking-wider">Scan to Verify</h3>
             <QRGenerator
-              value={`https://kaushal-id.in/verify/${worker.id}`}
+              value={`https://kaushal-id.vercel.app/verify/${worker.id}`}
               size={160}
             />
             <p className="text-xs text-white/30 mt-3">Live Safety Score</p>
@@ -113,10 +113,10 @@ export default async function VerifyWorkerPage({ params }) {
           <div className="glass rounded-2xl p-6 animate-slideUp delay-300">
             <h3 className="text-sm font-semibold text-white/70 mb-4 uppercase tracking-wider">Quick Actions</h3>
             <div className="flex flex-col gap-3">
-              <button className="w-full py-3 rounded-xl text-sm font-semibold text-white transition-all hover:opacity-90"
+              <a href={`tel:${worker.phone || '+919876543210'}`} className="w-full py-3 rounded-xl text-sm font-semibold text-white transition-all hover:opacity-90 text-center block"
                       style={{ background: 'var(--gradient-emerald)' }}>
                 📞 Call Now
-              </button>
+              </a>
               <button className="w-full py-3 rounded-xl text-sm font-semibold text-white/70 bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
                 ⭐ View Reviews
               </button>
