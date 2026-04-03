@@ -29,6 +29,39 @@ export default function WorkerDashboardPage() {
           return;
         }
 
+        // --- INJECT DUMMY DATA FOR SPECIFIC TEST ACCOUNT ---
+        if (user.email === 'shivamkr997386@gmail.com') {
+          setWorker({
+            id: 'KID-2026-9912',
+            name: user.user_metadata?.full_name || 'Shivam Kumar',
+            photo: null,
+            skill: user.user_metadata?.skill || 'Electrician',
+            skillIcon: '💡',
+            experience: `${user.user_metadata?.experience_years || 5} years`,
+            joinDate: user.created_at,
+            safetyScore: 98,
+            rating: 4.9,
+            totalReviews: 124,
+            repeatHireRate: 85,
+            verified: { aadhaar: true, police: true, storeVouch: true, storeName: 'Sharma Hardware' },
+            agentName: 'Ramesh Sharma',
+            verifiedDate: '2026-02-15',
+            phone: user.user_metadata?.phone || '9876543210',
+            location: user.user_metadata?.location || 'Mumbai',
+            amortizationPaid: 15,
+            badges: [
+              { id: '1', name: 'Top Rated', icon: '⭐' },
+              { id: '2', name: 'Punctual', icon: '⏱️' },
+              { id: '3', name: 'Verified', icon: '🛡️' }
+            ],
+            isPending: false,
+          });
+          setLoading(false);
+          return;
+        }
+        // ----------------------------------------------------
+
+
         // 2. Get profile
         const { data: profile } = await supabase
           .from('profiles')

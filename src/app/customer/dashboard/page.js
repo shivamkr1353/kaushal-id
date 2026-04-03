@@ -34,6 +34,24 @@ export default function CustomerDashboardPage() {
           return;
         }
 
+        // --- INJECT DUMMY DATA FOR SPECIFIC TEST ACCOUNT ---
+        if (user.email === 'university19082005@gmail.com') {
+          setProfile({
+            name: user.user_metadata?.full_name || 'University Test',
+            email: user.email,
+            phone: user.user_metadata?.phone || '+91 99999 88888',
+          });
+          setBookings([
+            { id: '1', service: 'Plumbing', date: '2026-03-20', workerName: 'Rajesh Kumar', workerSkill: 'Plumber', workerId: 'KID-2026-0001', status: 'Completed', otp: null },
+            { id: '2', service: 'Electrical Repair', date: '2026-04-01', workerName: 'Suresh Electrician', workerSkill: 'Electrician', workerId: 'KID-2026-0034', status: 'In Progress', otp: '4391' },
+            { id: '3', service: 'Carpentry', date: '2026-04-05', workerName: 'Anil Carpenter', workerSkill: 'Carpenter', workerId: 'KID-2026-0155', status: 'Upcoming', otp: '8821' },
+          ]);
+          setReviewCount(4);
+          setLoading(false);
+          return;
+        }
+        // ----------------------------------------------------
+
         // 2. Get profile
         const { data: profileData } = await supabase
           .from('profiles')
