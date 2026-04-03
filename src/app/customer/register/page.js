@@ -48,7 +48,9 @@ export default function CustomerRegisterPage() {
       }
 
       setSuccess('Account created successfully! Check your email for confirmation.');
-      setTimeout(() => router.push('/customer/dashboard'), 2000);
+      // Do not auto-redirect to dashboard because the user still needs to confirm their email
+      // and their session won't be active until they do.
+      // The success message already tells them to check their email.
     } catch (err) {
       setError(err.message || 'Something went wrong. Please try again.');
     } finally {

@@ -24,6 +24,8 @@ export default function AgentRegisterPage() {
 
     try {
       const supabase = createClient();
+
+      // 1. Sign up the user
       const { data, error: signUpError } = await supabase.auth.signUp({
         email: form.email,
         password: form.password,
@@ -49,8 +51,14 @@ export default function AgentRegisterPage() {
         return;
       }
 
-      setSuccess('Agent account created! Check your email for confirmation.');
-      setTimeout(() => router.push('/agent/dashboard'), 2000);
+      // 2. We skip creating DB rows here because without a confirmed session,
+      // Postgres RLS policies will block the insert.
+      // Auto-creation of rows will be handled by the dashboard upon first login.
+      setSuccess('Account created successfully! Please check your email to confirm your account.');
+
+      // Do not auto-redirect to dashboard because the user still needs to confirm their email
+      // and their session won't be active until they do.
+      // The success message already tells them to check their email.
     } catch (err) {
       setError(err.message || 'Something went wrong. Please try again.');
     } finally {

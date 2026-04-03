@@ -9,13 +9,18 @@ import { createClient } from '@/lib/supabase/client';
 import { SERVICES } from '@/lib/constants';
 
 export default function WorkerRegisterPage() {
-  const [form, setForm] = useState({ name: '', email: '', phone: '', skill: '', experience: '', aadhaar: '', password: '' });
+  const [form, setForm] = useState({ name: '', email: '', phone: '', skill: '', experience: '', aadhaar: '', password: '', location: '' });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const router = useRouter();
 
   const update = (key) => (e) => setForm({ ...form, [key]: e.target.value });
+
+  const generateKaushalId = () => {
+    const num = Math.floor(1000 + Math.random() * 9000);
+    return `KID-2026-${num}`;
+  };
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -25,6 +30,8 @@ export default function WorkerRegisterPage() {
 
     try {
       const supabase = createClient();
+
+      // 1. Sign up the user
       const { data, error: signUpError } = await supabase.auth.signUp({
         email: form.email,
         password: form.password,
@@ -36,6 +43,7 @@ export default function WorkerRegisterPage() {
             role: 'worker',
             skill: form.skill,
             experience_years: form.experience,
+            location: form.location,
             aadhaar: form.aadhaar,
           },
         },
@@ -51,8 +59,14 @@ export default function WorkerRegisterPage() {
         return;
       }
 
-      setSuccess('Kaushal-ID profile created! Check your email for confirmation.');
-      setTimeout(() => router.push('/worker/dashboard'), 2000);
+      // 2. We skip creating DB rows here because without a confirmed session,
+      // Postgres RLS policies will block the insert.
+      // Auto-creation of rows will be handled by the dashboard upon first login.
+      setSuccess('Profile created successfully! Please check your email to confirm your account.');
+
+      // Do not auto-redirect to dashboard because the user still needs to confirm their email
+      // and their session won't be active until they do.
+      // The success message already tells them to check their email.
     } catch (err) {
       setError(err.message || 'Something went wrong. Please try again.');
     } finally {
@@ -112,6 +126,7 @@ export default function WorkerRegisterPage() {
             </div>
 
             <Input id="worker-exp" label="Years of Experience" type="number" value={form.experience} onChange={update('experience')} required />
+            <Input id="worker-location" label="Location (City/Area)" value={form.location} onChange={update('location')} />
             <Input id="worker-aadhaar" label="Aadhaar Number" type="text" value={form.aadhaar} onChange={update('aadhaar')} required />
             <Input id="worker-password" label="Password" type="password" value={form.password} onChange={update('password')} required />
 
